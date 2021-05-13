@@ -2,12 +2,12 @@ Assignment 2 readme File
 
 ------------------------------------------------------------------------
 What is your name?
-
+Allison Qi
 
 
 ------------------------------------------------------------------------
 How many late days are you using on this assignment?
-
+0
 
 
 ------------------------------------------------------------------------
@@ -15,6 +15,19 @@ What authorized sources of information did you use to complete
 the assignment? COPY THE LIST of authorized sources of information
 given in the "Policies" web page to this section of the readme file,
 and edit it as appropriate.
+The course's lectures.
+
+The course's precepts.
+
+The course's website.
+
+Documents that are referenced directly by the course's website. Such
+documents include the course's lecture slides and precept handouts.
+
+The course's textbooks.
+
+The man pages on the armlab cluster.
+
 
 
 
@@ -29,12 +42,12 @@ may trigger a course penalty, and depending on the nature of the
 interaction, may additionally require the interaction being reported
 to the Committee on Discipline. Write "None" if you used no
 unauthorized sources of information.
-
+None
 
 
 ------------------------------------------------------------------------
 What is your assessment of the assignment? Was it helpful? Was it fun?
-
+Learned a lot.
 
 
 ------------------------------------------------------------------------
@@ -49,7 +62,7 @@ What warnings does splint generate on stra.c, and what are your
 disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
-
+None
 
 
 ------------------------------------------------------------------------
@@ -57,7 +70,7 @@ What warnings does critTer generate on stra.c, and what are your
 disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
-
+None
 
 
 ------------------------------------------------------------------------
@@ -65,7 +78,7 @@ What warnings does splint generate on strp.c, and what are your
 disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
-
+None
 
 
 ------------------------------------------------------------------------
@@ -73,7 +86,7 @@ What warnings does critTer generate on strp.c, and what are your
 disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
-
+None
 
 
 ------------------------------------------------------------------------
@@ -81,7 +94,7 @@ What warnings does splint generate on replace.c, and what are your
 disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
-
+None
 
 
 ------------------------------------------------------------------------
@@ -89,14 +102,23 @@ What warnings does critTer generate on replace.c, and what are your
 disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
-
+None
 
 
 ------------------------------------------------------------------------
 Is it possible for Str_copy or Str_concat to call assert to verify
 that the destination memory area specified by the caller is large
 enough? Explain.
-
+No, it is not possible to call assert to verify that the destination
+memory area is large enough for Str_copy, since the location str1[] we
+are copying to could simply be an arbitrary location in memory which
+does not end with a '\0' character, meaning we never know if we go past
+the safe bounds into memory that is being  used for something else.
+When calling the concatentation Str_concat function we also do not
+know what the memory spaces after the '\0' character in str1[] is
+being used for and it might have another '\0' character or not, but
+it could also start to be used for other purposes  at any point after
+the string ends.
 
 
 ------------------------------------------------------------------------

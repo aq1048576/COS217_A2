@@ -1,12 +1,12 @@
 /*--------------------------------------------------------------------*/
 /* replace.c                                                          */
-/* Author: ???                                                        */
+/* Author: Allison Qi                                                 */
 /*--------------------------------------------------------------------*/
 
-#include "str.h"
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include "str.h"
 
 /*--------------------------------------------------------------------*/
 
@@ -21,6 +21,28 @@ static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
    /* Insert your code here. */
+   /* number of times pcFrom appears*/
+   size_t num = 0;
+   /*length of the pcFrom*/
+   size_t len1 = Str_getLength(pcFrom);
+   /* Pointer to the most recent, if any, instance of pcFrom*/
+   char * point;
+   assert(pcLine!= NULL);
+   assert(pcFrom!= NULL);
+   assert(pcTo!= NULL);
+   if (*pcFrom == '\0'){
+      printf("%s", pcLine);
+      return 0;
+   }
+   while ((point = Str_search(pcLine,pcFrom))){
+      *point = '\0';
+      printf("%s", pcLine);
+      printf("%s", pcTo);
+      pcLine = point+len1;
+      num++;
+   }
+   printf("%s", pcLine);
+   return num;
 }
 
 /*--------------------------------------------------------------------*/
@@ -55,9 +77,15 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
-   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
+   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
       /* Insert your code here. */
-
+      if (!argv[1]){
+         printf("%s", acLine);
+      }
+      else {
+         uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
+      }
+   }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
 }

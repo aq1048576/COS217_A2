@@ -153,7 +153,10 @@ static void testCopy(void)
       ASSURE(pcResult == acDest1);
       (void)strcpy(acDest2, acSrc);
       ASSURE(memcmp(acDest1, acDest2, sizeof(acDest1)) == 0);
+
    }
+   
+
 
    {
       const char acSrc[] = {'\0', 's'};
